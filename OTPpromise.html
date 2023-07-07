@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>OTP Promise</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      background-color: #f7f7f7;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+    }
+
+    h1 {
+      color: #3366cc;
+      margin-bottom: 20px;
+    }
+
+    label {
+      font-size: 18px;
+    }
+
+    input[type="text"] {
+      padding: 8px;
+      font-size: 16px;
+    }
+
+    button {
+      margin-top: 10px;
+      padding: 10px 20px;
+      font-size: 16px;
+      background-color: #3366cc;
+      color: #ffffff;
+      border: none;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background-color: #235fa1;
+    }
+  </style>
+</head>
+<body>
+  <h1>OTP Verification</h1>
+  <label for="otp">Enter OTP:</label>
+  <br>
+  <input type="text" id="otp" />
+  <br>
+  <button onclick="submitOTP()">Submit</button>
+
+  <script>
+    function submitOTP() {
+      const enteredOTP = document.getElementById("otp").value;
+
+      const otpPromise = new Promise((resolve, reject) => {
+        if (enteredOTP === "1234") {
+          resolve("OTP is correct!");
+        } else {
+          reject("Invalid OTP!");
+        }
+      });
+
+      otpPromise
+        .then((message) => {
+          alert(message);
+        })
+        .catch((error) => {
+          alert(error);
+        });
+    }
+  </script>
+</body>
+</html>
